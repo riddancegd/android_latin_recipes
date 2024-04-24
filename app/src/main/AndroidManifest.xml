@@ -15,7 +15,7 @@
         android:theme="@style/Theme.YapeRecipes"
         tools:targetApi="31">
         <activity
-            android:name=".ui.general.ui.MainActivity"
+            android:name=".general.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

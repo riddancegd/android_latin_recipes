@@ -1,4 +1,4 @@
-package com.example.yaperecipes.ui.general.ui
+package com.example.yaperecipes.general.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

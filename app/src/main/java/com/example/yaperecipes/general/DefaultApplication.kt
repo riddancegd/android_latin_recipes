@@ -1,4 +1,4 @@
-package com.example.yaperecipes.ui.general.ui
+package com.example.yaperecipes.general
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
