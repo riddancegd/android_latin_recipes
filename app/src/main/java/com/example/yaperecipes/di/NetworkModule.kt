@@ -17,7 +17,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(): Retrofit =
         Retrofit.Builder()
-            .baseUrl("https://demo4009182.mockable.io/")
+            .baseUrl("https://riddancegd.github.io/recipes_api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

@@ -1,10 +1,12 @@
 package com.example.yaperecipes.data.model
 
+import java.io.Serializable
+
 data class Recipe(
     val id: Int,
     val name: String,
-    val imageUrl: String,
+    val image_url: String,
     val location: Location,
     val ingredients: List<Ingredient>,
     val procedure: String
-)
+) : Serializable

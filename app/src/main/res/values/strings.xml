@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Yape Recipes</string>
+    <string name="ingredients_label">Ingredients:\n%s</string>
+    <string name="procedure_label">Procedure:\n%s</string>
 </resources>
