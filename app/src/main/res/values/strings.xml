@@ -3,6 +3,7 @@
     <string name="ingredients_label">Ingredients:\n%s</string>
     <string name="procedure_label">Procedure:\n%s</string>
     <string name="origin_label">Origin:\n%s</string>
+    <string name="recipe_title">Recipes</string>
     <string name="view_on_map">View on Map</string>
     <string name="search_query">Search for recipe or ingredient…</string>
     <string name="maps_api_key">AIzaSyDXdJdMd18VOGmJsDaD_LtYegFLoSgsbHY</string>

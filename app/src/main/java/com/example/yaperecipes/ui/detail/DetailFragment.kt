@@ -1,9 +1,7 @@
 package com.example.yaperecipes.ui.detail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -16,30 +14,26 @@ import com.example.yaperecipes.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailFragment : Fragment() {
-    private var _binding: FragmentDetailBinding? = null
-    private val binding get() = _binding!!
-    private val args: DetailFragmentArgs by navArgs()
+class DetailFragment : Fragment(R.layout.fragment_detail) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentDetailBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        displayRecipeDetails()
-        args.recipe?.let { setRecipeLocationButton(it.location) }
+
+        val binding = FragmentDetailBinding.bind(view)
+
+        binding.let {
+            displayRecipeDetails(binding)
+            args.recipe?.let { setRecipeLocationButton(binding, it.location) }
+        }
     }
 
-    private fun displayRecipeDetails() {
+    private fun displayRecipeDetails(binding: FragmentDetailBinding) {
         val recipe = args.recipe
         recipe?.let {
             Glide.with(this)
-                .load(it.image_url)
+                .load(it.image)
                 .into(binding.imageRecipe)
 
             //Set the toolbar name to the recipe name
@@ -56,15 +50,11 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setRecipeLocationButton(location: Location) {
+    private fun setRecipeLocationButton(binding: FragmentDetailBinding, location: Location) {
         binding.btnRecipeOrigin.setOnClickListener {
                 val action = DetailFragmentDirections.actionDetailFragmentToMapFragment(location)
                 findNavController().navigate(action)
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

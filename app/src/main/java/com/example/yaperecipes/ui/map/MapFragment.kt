@@ -1,11 +1,10 @@
 package com.example.yaperecipes.ui.map
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.example.yaperecipes.R
 import com.example.yaperecipes.databinding.FragmentMapBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -15,26 +14,18 @@ import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MapFragment : Fragment() {
-
-    private var _binding: FragmentMapBinding? = null
-    private val binding get() = _binding!!
+class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val args: MapFragmentArgs by navArgs()
 
     private lateinit var mapView: MapView
     private var googleMap: GoogleMap? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMapBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val binding = FragmentMapBinding.bind(view)
+
         mapView = binding.mapView
         mapView.onCreate(savedInstanceState)
 
@@ -70,7 +61,6 @@ class MapFragment : Fragment() {
 
     override fun onDestroyView() {
         mapView.onDestroy()
-        _binding = null
         super.onDestroyView()
     }
 

@@ -20,7 +20,7 @@ class RecipeAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: Recipe, onClick: (Recipe) -> Unit) {
             binding.textRecipeName.text = recipe.name
-            Glide.with(binding.imageRecipe.context).load(recipe.image_url).into(binding.imageRecipe)
+            Glide.with(binding.imageRecipe.context).load(recipe.image).into(binding.imageRecipe)
             itemView.setOnClickListener { onClick(recipe) }
         }
     }

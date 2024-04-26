@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.yaperecipes.ui.home.HomeFragment"
-        android:label="Home"
+        android:label="Recipes"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_HomeFragment_to_DetailFragment"
