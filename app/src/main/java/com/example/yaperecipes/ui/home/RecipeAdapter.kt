@@ -33,6 +33,11 @@ class RecipeAdapter(
 
     override fun getItemCount(): Int = recipes.size
 
+    fun setFilteredList(recipes: List<Recipe>){
+        this.recipes = recipes
+        notifyDataSetChanged()
+    }
+
     fun submitList(newRecipes: List<Recipe>) {
         recipes = newRecipes
         notifyDataSetChanged()

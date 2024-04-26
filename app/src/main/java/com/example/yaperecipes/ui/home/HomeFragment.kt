@@ -1,9 +1,11 @@
 package com.example.yaperecipes.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -18,6 +20,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var recipeAdapter: RecipeAdapter
+    private var recipeList = emptyList<Recipe>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +34,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         observeRecipes()
+        setupSearchView()
     }
 
     private fun setupRecyclerView() {
@@ -40,6 +44,7 @@ class HomeFragment : Fragment() {
 
     private fun observeRecipes() {
         viewModel.recipes.observe(viewLifecycleOwner) { recipes ->
+            recipeList = recipes
             recipeAdapter.submitList(recipes)
         }
     }
@@ -47,6 +52,27 @@ class HomeFragment : Fragment() {
     private fun navigateToDetailFragment(recipe: Recipe) {
         val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(recipe)
         findNavController().navigate(action)
+    }
+
+
+    private fun setupSearchView(){
+
+        Log.d("LAUNCHED", "ola k ase")
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val recipeFiltered = recipeList.filter { recipeFilter ->
+                    recipeFilter.name.lowercase().contains(newText.toString().lowercase())
+                }
+                recipeAdapter.submitList(recipeFiltered)
+                return true
+            }
+        })
+
     }
 
     override fun onDestroyView() {

@@ -15,6 +15,9 @@
             app:destination="@id/detailFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpToInclusive="true"
+            app:restoreState="true"
+            app:popUpToSaveState="true"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
@@ -23,9 +26,26 @@
         android:name="com.example.yaperecipes.ui.detail.DetailFragment"
         android:label="Detail"
         tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_DetailFragment_to_MapFragment"
+            app:destination="@id/mapFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="recipe"
             app:argType="com.example.yaperecipes.data.model.Recipe"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.yaperecipes.ui.map.MapFragment"
+        android:label="Recipe Origin"
+        tools:layout="@layout/fragment_map" >
+        <argument
+            android:name="location"
+            app:argType="com.example.yaperecipes.data.model.Location"
             app:nullable="true" />
     </fragment>
 

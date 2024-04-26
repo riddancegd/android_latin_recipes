@@ -79,5 +79,8 @@ dependencies {
     implementation ("com.google.dagger:hilt-android:2.50")
     kapt ("com.google.dagger:hilt-compiler:2.50")
 
+    //Maps
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+
 
 }
