@@ -1,7 +1,11 @@
 package com.example.yaperecipes.ui.map
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.yaperecipes.R
@@ -29,15 +33,37 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         mapView = binding.mapView
         mapView.onCreate(savedInstanceState)
 
-        mapView.getMapAsync { map ->
-            googleMap = map
-            args.location?.let { location ->
-                val latLng = LatLng(location.latitude, location.longitude)
-                map.addMarker(MarkerOptions().position(latLng).title("Recipe Origin"))
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+        //Set the name of the toolbar to the recipe name
+        (activity as AppCompatActivity).supportActionBar?.title = args.toolbarTitle
+
+        if (!isInternetAvailable(requireContext())) {
+            binding.noInternetMessage.visibility = View.VISIBLE
+            binding.mapView.visibility = View.GONE
+        } else {
+            binding.mapView.visibility = View.VISIBLE
+            mapView.getMapAsync { map ->
+                binding.noInternetMessage.visibility = View.GONE
+                googleMap = map
+                args.location?.let { location ->
+                    val latLng = LatLng(location.latitude, location.longitude)
+                    map.addMarker(MarkerOptions().position(latLng).title("Recipe Origin"))
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+                }
             }
         }
+
+
     }
+
+    fun isInternetAvailable(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(network)
+        return networkCapabilities != null &&
+                (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                        networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
+    }
+
 
     override fun onStart() {
         super.onStart()

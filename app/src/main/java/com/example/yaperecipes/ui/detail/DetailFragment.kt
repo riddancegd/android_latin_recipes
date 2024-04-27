@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.yaperecipes.R
-import com.example.yaperecipes.data.model.Location
+import com.example.yaperecipes.data.model.Recipe
 import com.example.yaperecipes.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +25,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
         binding.let {
             displayRecipeDetails(binding)
-            args.recipe?.let { setRecipeLocationButton(binding, it.location) }
+            args.recipe?.let { setRecipeLocationButton(binding, it) }
         }
     }
 
@@ -42,17 +42,18 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             val ingredientsText = it.ingredients.joinToString("\n") { ingredient ->
                 "${ingredient.amount} ${ingredient.unit} ${"of"} ${ingredient.name}"
             }
-            binding.textIngredients.text = getString(R.string.ingredients_label, ingredientsText)
-            binding.textProcedure.text = getString(R.string.procedure_label, it.procedure ?: "")
-            binding.textLocation.text = getString(R.string.origin_label, it.location.name ?: "")
+            binding.textIngredients.text = ingredientsText
+            binding.textProcedure.text = it.procedure ?: ""
+            binding.textLocation.text = it.location.name ?: ""
         } ?: run {
             Toast.makeText(context, "Recipe data not available", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun setRecipeLocationButton(binding: FragmentDetailBinding, location: Location) {
+    private fun setRecipeLocationButton(binding: FragmentDetailBinding, recipe: Recipe) {
         binding.btnRecipeOrigin.setOnClickListener {
-                val action = DetailFragmentDirections.actionDetailFragmentToMapFragment(location)
+                val action = DetailFragmentDirections
+                    .actionDetailFragmentToMapFragment(recipe.location, recipe.name)
                 findNavController().navigate(action)
         }
     }

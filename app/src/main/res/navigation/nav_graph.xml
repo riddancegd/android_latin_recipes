@@ -38,12 +38,15 @@
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.yaperecipes.ui.map.MapFragment"
-        android:label="Recipe Origin"
+        android:label=""
         tools:layout="@layout/fragment_map" >
         <argument
             android:name="location"
             app:argType="com.example.yaperecipes.data.model.Location"
             app:nullable="true" />
+        <argument
+            android:name="toolbar_title"
+            app:argType="string" />
     </fragment>
 
 </navigation>
