@@ -61,41 +61,41 @@ dependencies {
 
     //Testing
     testImplementation(libs.junit)
-    testImplementation ("androidx.arch.core:core-testing:2.2.0")
-    testImplementation ("io.mockk:mockk:1.13.7")
-    testImplementation ("org.mockito:mockito-core:4.11.0")
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+    testImplementation (libs.androidx.core.testing)
+    testImplementation (libs.mockk)
+    testImplementation (libs.mockito.core)
+    testImplementation (libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation ("androidx.arch.core:core-testing:2.2.0")
-    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.51")
-    androidTestImplementation ("org.mockito:mockito-android:4.11.0")
-    kaptAndroidTest ("com.google.dagger:hilt-android-compiler:2.51")
-    debugImplementation ("androidx.fragment:fragment-testing:1.3.6")
+    androidTestImplementation (libs.androidx.core.testing)
+    androidTestImplementation (libs.hilt.android.testing)
+    androidTestImplementation (libs.mockito.android)
+    kaptAndroidTest (libs.hilt.android.compiler)
+    debugImplementation (libs.androidx.fragment.testing)
 
     // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     // Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
 
     // Material Design
-    implementation ("com.google.android.material:material:1.11.0")
+    implementation (libs.material.v1110)
 
     // Glide
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation (libs.glide)
 
     // Dagger Hilt
-    implementation ("com.google.dagger:hilt-android:2.51")
-    kapt ("com.google.dagger:hilt-compiler:2.51")
+    implementation (libs.hilt.android)
+    kapt (libs.hilt.compiler)
 
     //Maps
-    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+    implementation (libs.play.services.maps)
 
     //Lottie (animations)
-    implementation ("com.airbnb.android:lottie:3.4.0")
+    implementation (libs.lottie)
 
 
 
