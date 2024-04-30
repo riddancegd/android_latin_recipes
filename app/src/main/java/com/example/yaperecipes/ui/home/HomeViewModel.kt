@@ -28,7 +28,7 @@ class HomeViewModel @Inject constructor(
         fetchRecipes()
     }
 
-    private fun fetchRecipes() {
+    fun fetchRecipes() {
         viewModelScope.launch {
             _recipes.value = Resource.Loading()
             repository.getRecipes().collect {

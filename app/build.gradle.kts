@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.yaperecipes.HiltTestRunner"
     }
 
     buildTypes {
@@ -57,9 +57,21 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.junit.ktx)
+
+    //Testing
     testImplementation(libs.junit)
+    testImplementation ("androidx.arch.core:core-testing:2.2.0")
+    testImplementation ("io.mockk:mockk:1.13.7")
+    testImplementation ("org.mockito:mockito-core:4.11.0")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation ("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.51")
+    androidTestImplementation ("org.mockito:mockito-android:4.11.0")
+    kaptAndroidTest ("com.google.dagger:hilt-android-compiler:2.51")
+    debugImplementation ("androidx.fragment:fragment-testing:1.3.6")
 
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
@@ -76,11 +88,15 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
     // Dagger Hilt
-    implementation ("com.google.dagger:hilt-android:2.50")
-    kapt ("com.google.dagger:hilt-compiler:2.50")
+    implementation ("com.google.dagger:hilt-android:2.51")
+    kapt ("com.google.dagger:hilt-compiler:2.51")
 
     //Maps
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
+
+    //Lottie (animations)
+    implementation ("com.airbnb.android:lottie:3.4.0")
+
 
 
 }

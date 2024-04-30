@@ -114,6 +114,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.noInternetMessage.visibility= View.GONE
         binding.errorMessage.visibility= View.GONE
         binding.loadingIcon.visibility = View.VISIBLE
+        binding.loadingIcon.playAnimation()
+
     }
 
     private fun showNoInternetConnectionMessage(binding: FragmentHomeBinding){
