@@ -39,6 +39,10 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
 }
 
@@ -70,6 +74,7 @@ dependencies {
     androidTestImplementation (libs.androidx.core.testing)
     androidTestImplementation (libs.hilt.android.testing)
     androidTestImplementation (libs.mockito.android)
+    debugImplementation(libs.androidx.ui.tooling)
     kaptAndroidTest (libs.hilt.android.compiler)
     debugImplementation (libs.androidx.fragment.testing)
 
@@ -96,6 +101,13 @@ dependencies {
 
     //Lottie (animations)
     implementation (libs.lottie)
+
+    //Compose
+    implementation ("androidx.compose.ui:ui:1.6.7")
+    implementation ("androidx.compose.material:material:1.6.7")
+    implementation ("androidx.compose.ui:ui-tooling-preview:1.6.7")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation ("androidx.activity:activity-compose:1.9.0")
 
 
 
