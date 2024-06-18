@@ -1,6 +1,4 @@
-# Yape Recipes
-
-Aplicación desarrollada para el proceso de selección de Yape.
+# Simple Mexican Recipes
 
 ## Arquitectura
 El proyecto fue creado usando la arquitectura MVVM. Se decidió así ya que es la arquitectura más usada para desarrollo android y debido a la versatilidad que ofrece se puede trabajar de manera eficiente y rápida, lo cual vino genial debido al limitado tiempo que se tenía para desarrollar la app.
