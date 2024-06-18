@@ -1,4 +1,4 @@
-# Simple Mexican Recipes
+# Android Latin Recipes
 
 ## Arquitectura
 El proyecto fue creado usando la arquitectura MVVM. Se decidió así ya que es la arquitectura más usada para desarrollo android y debido a la versatilidad que ofrece se puede trabajar de manera eficiente y rápida, lo cual vino genial debido al limitado tiempo que se tenía para desarrollar la app.
